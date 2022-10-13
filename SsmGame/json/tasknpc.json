@@ -1,0 +1,28 @@
+[
+    {
+        "Id":1,
+        "TalkType":[1,0],
+        "Talk":["npctalk1","npctalk2","npctalk3","npctalk4"]
+    },
+    {
+        "Id":2,
+        "TalkType":[2,0],
+        "Talk":["npctalk5","npctalk6"]
+    },
+    {
+        "Id":3,
+        "TalkType":[3,0],
+        "Talk":["npctalk7"]
+    },
+    {
+        "Id":4,
+        "TalkType":[3,5],
+        "Talk":["npctalk8"]
+    },
+    {
+        "Id":5,
+        "TalkType":[3,63],
+        "Talk":["npctalk9"]
+    }
+]
+

@@ -1,0 +1,25 @@
+[
+    {
+        "ID":10,
+        "Time":21600,
+        "GiftLv":18,
+        "Jewel":0,
+        "Gold":500000,
+        "Item":[1007,5028,5027],
+        "Quantity":[160,1,1],
+        "GiftUi":"xt_xianshihuodong1",
+        "GiftIcon":"btn_xianshihuodongrk1"
+    },
+    {
+        "ID":11,
+        "Time":43200,
+        "GiftLv":24,
+        "Jewel":0,
+        "Gold":2000000,
+        "Item":[1044,5004,5026],
+        "Quantity":[120,1,1],
+        "GiftUi":"xt_xianshihuodong2",
+        "GiftIcon":"btn_xianshihuodongrk2"
+    }
+]
+

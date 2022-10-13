@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>主页</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=8">
+
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/font-awesome.min.css" rel="stylesheet">
+<link href="../css/animate.css" rel="stylesheet">
+<link href="../css/style.css" rel="stylesheet">
+<link href="../plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow: hidden">
+	<div id="wrapper">
+		<!--左侧导航开始-->
+		<nav class="navbar-default navbar-static-side" role="navigation">
+			<div class="nav-close">
+				<i class="fa fa-times-circle"></i>
+			</div>
+			<div class="sidebar-collapse">
+				<ul class="nav" id="side-menu">
+					<li class="nav-header">
+						<div class="dropdown profile-element">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#"> <span class="clear"> <span
+									class="block m-t-xs" style="font-size: 20px;"> <i class="fa fa-area-chart"></i> <strong
+										class="font-bold">Admin</strong>
+								</span>
+							</span>
+							</a>
+						</div>
+						<div class="logo-element">Admin</div>
+					</li>
+					<li><a class="J_menuItem" href="http://www.baidu.com"> <i
+							class="glyphicon glyphicon-home"></i> <span class="nav-label">主页</span>
+					</a></li>
+					<li class="line dk"></li>
+					<li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> <span class="nav-label">游戏管理</span><span
+							class="icon-chevron-left"></span></a>
+						<ul class="nav nav-second-level">
+							<li><a class="J_menuItem" href="game.html">游戏列表</a></li>
+							<li><a class="J_menuItem" href="loginNotice.html">登录公告</a></li>
+							<li><a class="J_menuItem" href="notice.html">游戏公告</a></li>
+							<li><a class="J_menuItem" href="shopItems.html">充值表</a></li>
+							<li><a class="J_menuItem" href="activecode.html">激活码</a></li>
+						</ul></li>
+					<li class="line dk"></li>
+					<li><a href="#"><i class="glyphicon glyphicon-envelope"></i> <span class="nav-label">数据统计</span><span
+							class="icon-chevron-left"></span></a>
+						<ul class="nav nav-second-level">
+							<li><a class="J_menuItem" href="censuse.html">数据统计</a></li>
+							<li><a class="J_menuItem" href="gameanalysis.html">游戏统计</a></li>
+						</ul></li>
+					<li class="line dk"></li>
+					<li><a href="#"><i class="glyphicon glyphicon-th-large"></i> <span class="nav-label">平台管理</span><span
+							class="icon-chevron-left"></span></a>
+						<ul class="nav nav-second-level">
+							<li><a class="J_menuItem" href="plat_dock.html">平台对接信息</a></li>
+							<li><a class="J_menuItem" href="plat_list.html">微信平台信息</a></li>
+							<li><a class="J_menuItem" href="game_list.html">平台游戏添加</a></li>
+						</ul></li>
+					<li class="line dk"></li>
+					<li><a href="#"><i class="glyphicon glyphicon-tasks"></i> <span class="nav-label">服务器管理</span><span
+							class="icon-chevron-left"></span></a>
+						<ul class="nav nav-second-level">
+							<li><a class="J_menuItem" href="servers.html">游戏服列表</a></li>
+							<li><a class="J_menuItem" href="servers.html">登录服列表</a></li>
+						</ul></li>
+					<li class="line dk"></li>
+					<li><a href="#"><i class="glyphicon glyphicon-envelope"></i> <span class="nav-label">邮件</span><span
+							class="icon-chevron-left"></span></a>
+						<ul class="nav nav-second-level">
+							<li><a class="J_menuItem" href="player_list.html">发送邮件</a></li>
+						</ul></li>
+					<li class="line dk"></li>
+					<li><a href="#"><i class="glyphicon glyphicon-usd"></i> <span class="nav-label">充值</span><span
+							class="icon-chevron-left"></span></a>
+						<ul class="nav nav-second-level">
+							<li><a class="J_menuItem" href="singleSupplement.html">补单</a></li>
+						</ul></li>
+					<li class="line dk"></li>
+					<li><a href="#"><i class="glyphicon glyphicon-cog"></i> <span class="nav-label">设置</span><span
+							class="icon-chevron-left"></span></a>
+						<ul class="nav nav-second-level">
+							<li><a class="J_menuItem" href="updatePw.html">修改密码</a></li>
+						</ul></li>
+				</ul>
+			</div>
+		</nav>
+		<!--左侧导航结束-->
+		<!--右侧部分开始-->
+		<div id="page-wrapper" class="gray-bg dashbard-1">
+			<div class="row border-bottom">
+				<nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+					<div class="navbar-header">
+						<a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i
+							class="glyphicon glyphicon-align-justify"></i> </a>
+					</div>
+				</nav>
+			</div>
+			<div class="row J_mainContent" id="content-main">
+				<iframe id="J_iframe" width="100%" height="100%" src="censuse.html" frameborder="0" data-id=""
+					seamless></iframe>
+			</div>
+		</div>
+		<!--右侧部分结束-->
+	</div>
+
+	<!-- 全局js -->
+	<script src="../js/jquery.min.js" type="text/javascript"></script>
+	<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../js/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<script src="../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="../js/plugins/layer/layer.min.js" type="text/javascript"></script>
+	<script src="../plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
+	<!-- 自定义js -->
+	<script src="../js/hAdmin.js"></script>
+	<script type="text/javascript" src="../js/index.js"></script>
+	<script src="../js/net.js"></script>
+</body>
+
+</html>

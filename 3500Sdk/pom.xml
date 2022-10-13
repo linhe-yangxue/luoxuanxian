@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.ssmCore</groupId>
+		<artifactId>SsmCore</artifactId>
+		<version>0.0.1-beat</version>
+		<relativePath>../SsmCore/pom.xml</relativePath>
+	</parent>
+
+	<groupId>com.jksdk</groupId>
+	<artifactId>3500</artifactId>
+	<packaging>jar</packaging>
+	<name>3500Sdk</name>
+	
+	<dependencies>
+	
+		<dependency>
+			<groupId>com.ssmCore</groupId>
+			<artifactId>SsmCore</artifactId>
+			<version>${parent.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ssmShare</groupId>
+			<artifactId>SsmShare</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+	
+	</dependencies>
+
+	<build>
+		<finalName>3500Sdk-${project.parent.version}</finalName>
+		<plugins>
+			<!-- 设置编译版本 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.2</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<configuration>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<classifier>lib</classifier>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

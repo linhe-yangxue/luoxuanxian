@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssmLogin.defdata.mapper.PaymementMapper" >
+  <resultMap id="BaseResultMap" type="com.ssmLogin.defdata.entity.Paymement" >
+    <id column="ownOrder" property="ownOrder" jdbcType="VARCHAR" />
+    <result column="uuid" property="uuid" jdbcType="VARCHAR" />
+    <result column="guid" property="guid" jdbcType="BIGINT" />
+    <result column="gid" property="gid" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="VARCHAR" />
+    <result column="zid" property="zid" jdbcType="INTEGER" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="createDate" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="complateDate" property="complateDate" jdbcType="TIMESTAMP" />
+    <result column="goodsOrder" property="goodsOrder" jdbcType="VARCHAR" />
+    <result column="shopId" property="shopId" jdbcType="INTEGER" />
+    <result column="goodsNum" property="goodsNum" jdbcType="INTEGER" />
+    <result column="Amount" property="amount" jdbcType="REAL" />
+    <result column="sendStatus" property="sendStatus" jdbcType="INTEGER" />
+    <result column="sendTarget" property="sendTarget" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ownOrder, uuid, guid, gid, pid, zid, account, nickname, createDate, complateDate, 
+    goodsOrder, shopId, goodsNum, Amount, sendStatus, sendTarget, status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ssmLogin.defdata.entity.PaymementCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from paymement
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from paymement
+    where ownOrder = #{ownOrder,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from paymement
+    where ownOrder = #{ownOrder,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ssmLogin.defdata.entity.PaymementCriteria" >
+    delete from paymement
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ssmLogin.defdata.entity.Paymement" >
+    insert into paymement (ownOrder, uuid, guid, 
+      gid, pid, zid, account, 
+      nickname, createDate, complateDate, 
+      goodsOrder, shopId, goodsNum, 
+      Amount, sendStatus, sendTarget, 
+      status)
+    values (#{ownOrder,jdbcType=VARCHAR}, #{uuid,jdbcType=VARCHAR}, #{guid,jdbcType=BIGINT}, 
+      #{gid,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, #{zid,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, 
+      #{nickname,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{complateDate,jdbcType=TIMESTAMP}, 
+      #{goodsOrder,jdbcType=VARCHAR}, #{shopId,jdbcType=INTEGER}, #{goodsNum,jdbcType=INTEGER}, 
+      #{amount,jdbcType=REAL}, #{sendStatus,jdbcType=INTEGER}, #{sendTarget,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ssmLogin.defdata.entity.Paymement" >
+    insert into paymement
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ownOrder != null" >
+        ownOrder,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="guid != null" >
+        guid,
+      </if>
+      <if test="gid != null" >
+        gid,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="zid != null" >
+        zid,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="createDate != null" >
+        createDate,
+      </if>
+      <if test="complateDate != null" >
+        complateDate,
+      </if>
+      <if test="goodsOrder != null" >
+        goodsOrder,
+      </if>
+      <if test="shopId != null" >
+        shopId,
+      </if>
+      <if test="goodsNum != null" >
+        goodsNum,
+      </if>
+      <if test="amount != null" >
+        Amount,
+      </if>
+      <if test="sendStatus != null" >
+        sendStatus,
+      </if>
+      <if test="sendTarget != null" >
+        sendTarget,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ownOrder != null" >
+        #{ownOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="guid != null" >
+        #{guid,jdbcType=BIGINT},
+      </if>
+      <if test="gid != null" >
+        #{gid,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="zid != null" >
+        #{zid,jdbcType=INTEGER},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="complateDate != null" >
+        #{complateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsOrder != null" >
+        #{goodsOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsNum != null" >
+        #{goodsNum,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=REAL},
+      </if>
+      <if test="sendStatus != null" >
+        #{sendStatus,jdbcType=INTEGER},
+      </if>
+      <if test="sendTarget != null" >
+        #{sendTarget,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ssmLogin.defdata.entity.PaymementCriteria" resultType="java.lang.Integer" >
+    select count(*) from paymement
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update paymement
+    <set >
+      <if test="record.ownOrder != null" >
+        ownOrder = #{record.ownOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uuid != null" >
+        uuid = #{record.uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.guid != null" >
+        guid = #{record.guid,jdbcType=BIGINT},
+      </if>
+      <if test="record.gid != null" >
+        gid = #{record.gid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pid != null" >
+        pid = #{record.pid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zid != null" >
+        zid = #{record.zid,jdbcType=INTEGER},
+      </if>
+      <if test="record.account != null" >
+        account = #{record.account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nickname != null" >
+        nickname = #{record.nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createDate != null" >
+        createDate = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.complateDate != null" >
+        complateDate = #{record.complateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.goodsOrder != null" >
+        goodsOrder = #{record.goodsOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopId != null" >
+        shopId = #{record.shopId,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodsNum != null" >
+        goodsNum = #{record.goodsNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.amount != null" >
+        Amount = #{record.amount,jdbcType=REAL},
+      </if>
+      <if test="record.sendStatus != null" >
+        sendStatus = #{record.sendStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.sendTarget != null" >
+        sendTarget = #{record.sendTarget,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update paymement
+    set ownOrder = #{record.ownOrder,jdbcType=VARCHAR},
+      uuid = #{record.uuid,jdbcType=VARCHAR},
+      guid = #{record.guid,jdbcType=BIGINT},
+      gid = #{record.gid,jdbcType=VARCHAR},
+      pid = #{record.pid,jdbcType=VARCHAR},
+      zid = #{record.zid,jdbcType=INTEGER},
+      account = #{record.account,jdbcType=VARCHAR},
+      nickname = #{record.nickname,jdbcType=VARCHAR},
+      createDate = #{record.createDate,jdbcType=TIMESTAMP},
+      complateDate = #{record.complateDate,jdbcType=TIMESTAMP},
+      goodsOrder = #{record.goodsOrder,jdbcType=VARCHAR},
+      shopId = #{record.shopId,jdbcType=INTEGER},
+      goodsNum = #{record.goodsNum,jdbcType=INTEGER},
+      Amount = #{record.amount,jdbcType=REAL},
+      sendStatus = #{record.sendStatus,jdbcType=INTEGER},
+      sendTarget = #{record.sendTarget,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ssmLogin.defdata.entity.Paymement" >
+    update paymement
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="guid != null" >
+        guid = #{guid,jdbcType=BIGINT},
+      </if>
+      <if test="gid != null" >
+        gid = #{gid,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="zid != null" >
+        zid = #{zid,jdbcType=INTEGER},
+      </if>
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        createDate = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="complateDate != null" >
+        complateDate = #{complateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsOrder != null" >
+        goodsOrder = #{goodsOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        shopId = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsNum != null" >
+        goodsNum = #{goodsNum,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        Amount = #{amount,jdbcType=REAL},
+      </if>
+      <if test="sendStatus != null" >
+        sendStatus = #{sendStatus,jdbcType=INTEGER},
+      </if>
+      <if test="sendTarget != null" >
+        sendTarget = #{sendTarget,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ownOrder = #{ownOrder,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ssmLogin.defdata.entity.Paymement" >
+    update paymement
+    set uuid = #{uuid,jdbcType=VARCHAR},
+      guid = #{guid,jdbcType=BIGINT},
+      gid = #{gid,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=VARCHAR},
+      zid = #{zid,jdbcType=INTEGER},
+      account = #{account,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      createDate = #{createDate,jdbcType=TIMESTAMP},
+      complateDate = #{complateDate,jdbcType=TIMESTAMP},
+      goodsOrder = #{goodsOrder,jdbcType=VARCHAR},
+      shopId = #{shopId,jdbcType=INTEGER},
+      goodsNum = #{goodsNum,jdbcType=INTEGER},
+      Amount = #{amount,jdbcType=REAL},
+      sendStatus = #{sendStatus,jdbcType=INTEGER},
+      sendTarget = #{sendTarget,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
+    where ownOrder = #{ownOrder,jdbcType=VARCHAR}
+  </update>
+</mapper>

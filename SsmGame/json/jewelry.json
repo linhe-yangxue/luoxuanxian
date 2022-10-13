@@ -1,0 +1,19 @@
+[
+    {
+        "ID":1,
+        "Position":5,
+        "Basics":[2,3,4],
+        "Advanced":[1,2,3,4,5,6,7,8,9,10,11],
+        "Name":"item4006",
+        "Icon":["jiezhi1","jiezhi2","jiezhi2","jiezhi3","jiezhi3","jiezhi4","jiezhi4","jiezhi5","jiezhi5","jiezhi6","jiezhi6"]
+    },
+    {
+        "ID":2,
+        "Position":6,
+        "Basics":[2,5,6],
+        "Advanced":[12,13,14,15,16,17,18,19,20,21,22],
+        "Name":"item4007",
+        "Icon":["xianglian1","xianglian2","xianglian2","xianglian3","xianglian3","xianglian4","xianglian4","xianglian5","xianglian5","xianglian6","xianglian6"]
+    }
+]
+

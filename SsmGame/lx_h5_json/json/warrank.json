@@ -1,0 +1,45 @@
+[
+    {
+        "id":1000,
+        "ArenaNum":[1,1],
+        "RankMail":303,
+        "Capital":600000
+    },
+    {
+        "id":1001,
+        "ArenaNum":[2,2],
+        "RankMail":304,
+        "Capital":500000
+    },
+    {
+        "id":1002,
+        "ArenaNum":[3,3],
+        "RankMail":305,
+        "Capital":400000
+    },
+    {
+        "id":1003,
+        "ArenaNum":[4,10],
+        "RankMail":306,
+        "Capital":300000
+    },
+    {
+        "id":1004,
+        "ArenaNum":[11,20],
+        "RankMail":307,
+        "Capital":250000
+    },
+    {
+        "id":1005,
+        "ArenaNum":[21,50],
+        "RankMail":308,
+        "Capital":200000
+    },
+    {
+        "id":1006,
+        "ArenaNum":[51,100],
+        "RankMail":309,
+        "Capital":150000
+    }
+]
+

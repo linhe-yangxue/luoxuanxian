@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>游戏护具分析</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-Type" content="text/html; charset=utf-8">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/bootstrapValidator.min.css" rel="stylesheet">
+</head>
+<body>
+	<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="数据库地址，可以不填" name="url"> <input type="text" class="form-control" placeholder="数据名" name="database"> <span id="btn_download" class="input-group-addon" style="cursor: pointer">下载</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../js/jquery.min.js" type="text/javascript"></script>
+	<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../js/checkIframe.js"></script>
+	<script type="text/javascript">
+		$("#btn_download").click(function(e) {
+			var url = $("input[name='url']").val().trim();
+			var name = $("input[name='database']").val().trim();
+			if (name == "") {
+				parent.sweetAlert("请输入数据库名称！", "", "error");
+				return;
+			}
+			parent.$.sendRequest("../analysis/getGameData.me", {
+				database : name,
+				url : url
+			}, function(data) {
+				if (data.rt == 0) {
+					location.href = "/" + data.msg;
+				} else {
+					parent.sweetAlert(data.msg, "", "error");
+				}
+			});
+		});
+	</script>
+</body>
+</html>

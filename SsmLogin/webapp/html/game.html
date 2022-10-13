@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>游戏列表</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-Type" content="text/html; charset=utf-8">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<script src="../js/jquery.min.js"></script>
+<link href="../css/bootstrapValidator.min.css" rel="stylesheet">
+
+</head>
+<body>
+	<div class="container">
+		<div class="table-responsive">
+			<table class="table table-hover table-bordered">
+				<caption class="text-center">游戏列表</caption>
+				<thead>
+					<tr class="success">
+						<th>ID</th>
+						<th>游戏名称</th>
+						<th>游戏公告</th>
+						<th>游戏充值表</th>
+						<th>服务器信息</th>
+						<th>修改</th>
+					</tr>
+				</thead>
+				<tbody id="t_body">
+				</tbody>
+			</table>
+		</div>
+
+		<div class="modal fade" id="modal-modifySer" role="dialog" aria-labelledby="myModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h4 class="modal-title" id="myModalLabel">修改服务器信息</h4>
+					</div>
+					<div class="modal-body" style="margin: 15px;">
+						<form id="modifyGame" class="form-horizontal" role="form" action="/admin/game/udpateChat.me"
+							style="margin: 15px;">
+							<div class="form-group">
+								<div class="input-group">
+									<span class="input-group-addon">游戏Id</span><input type="text" class="form-control"
+										name="gid" readonly>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="input-group">
+									<span class="input-group-addon">游戏名称</span> <input type="text" class="form-control"
+										name="gameNa" readonly>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="input-group">
+									<span class="input-group-addon">聊天地址</span><input type="text" class="form-control"
+										name="chatUrl">
+								</div>
+							</div>
+
+							<div class="form-group text-center">
+								<button type="submit" class="btn btn-primary">保存</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/bootstrapValidator.min.js" type="text/javascript"></script>
+	<script src="../js/mine/game.js"></script>
+	<script src="../js/checkIframe.js"></script>
+</body>
+</html>

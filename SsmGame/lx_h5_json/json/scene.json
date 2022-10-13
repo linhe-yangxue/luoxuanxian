@@ -1,0 +1,45 @@
+[
+    {
+        "ID":1,
+        "bgFront":"map1_2_png",
+        "bgFrontSpeed":160,
+        "bgBack":"map1_1_png",
+        "bgBackSpeed":20
+    },
+    {
+        "ID":2,
+        "bgFront":"map2_2_png",
+        "bgFrontSpeed":160,
+        "bgBack":"map2_1_png",
+        "bgBackSpeed":20
+    },
+    {
+        "ID":3,
+        "bgFront":"map3_2_png",
+        "bgFrontSpeed":160,
+        "bgBack":"map3_1_png",
+        "bgBackSpeed":20
+    },
+    {
+        "ID":4,
+        "bgFront":"map4_2_png",
+        "bgFrontSpeed":160,
+        "bgBack":"map4_1_png",
+        "bgBackSpeed":20
+    },
+    {
+        "ID":5,
+        "bgFront":"map5_2_png",
+        "bgFrontSpeed":160,
+        "bgBack":"map5_1_png",
+        "bgBackSpeed":20
+    },
+    {
+        "ID":6,
+        "bgFront":"map6_2_png",
+        "bgFrontSpeed":160,
+        "bgBack":"map6_1_png",
+        "bgBackSpeed":20
+    }
+]
+

@@ -1,0 +1,21 @@
+[
+    {
+        "id":1,
+        "onLine":[200,200],
+        "offLine":[200,200],
+        "mail":16,
+        "mailFirst":0,
+        "icon":0,
+        "des":"monthcard"
+    },
+    {
+        "id":2,
+        "onLine":[200,200],
+        "offLine":[200,200],
+        "mail":17,
+        "mailFirst":18,
+        "icon":4008,
+        "des":"lifecard"
+    }
+]
+

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>玩家列表</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-Type" content="text/html; charset=utf-8">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<link href="../plugins/select2/select2.min.css" rel="stylesheet"
+	type="text/css" />
+<link href="../plugins/iCheck/square/_all.css" rel="stylesheet"
+	type="text/css" />
+<style type="text/css">
+.formgroup_bottom {
+	margin-bottom: 8px;
+}
+
+ul {
+	list-style: none;
+}
+
+.user_ul {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 5px;
+	width: 100%;
+	min-height: 50px;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	float: left;
+	width: 100%;
+}
+
+.user_li {
+	background-color: #e4e4e4;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	cursor: default;
+	float: left;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	padding: 5px 5px;
+}
+
+.userRemove {
+	cursor: pointer;
+}
+</style>
+</head>
+<body>
+	<div class="container" style="padding-top: 15px;">
+		<div class="row">
+			<div class="col-md-4 formgroup_bottom">
+				<div class="input-group">
+					<span class="input-group-addon">游戏</span> <select
+						class="form-control" name="gameId">
+					</select>
+				</div>
+			</div>
+			<div class="col-md-4 formgroup_bottom">
+				<div class="input-group">
+					<span class="input-group-addon" style="font-size: 12px">区号</span> <select
+						class="form-control" name="zid">
+					</select>
+				</div>
+			</div>
+			<div class="col-md-4 formgroup_bottom">
+				<div class="input-group">
+					<span class="input-group-addon" style="font-size: 12px">平台</span> <select
+						class="form-control" name="plat">
+					</select>
+				</div>
+			</div>
+		</div>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr class="success">
+					<th>上线时间</th>
+					<th>累计用户</th>
+					<th>累计充值</th>
+					<th>付费率</th>
+					<th>人均ARPU</th>
+					<th>人均ARPPU</th>
+					<th>当前区总人数</th>
+				</tr>
+			</thead>
+			<tbody id="t_body_totall">
+			</tbody>
+		</table>
+		<div class="row">
+			<div class="col-sm-2">
+				<span class="label label-warning">查询时间选择：</span>
+			</div>
+			<div class="col-sm-8">
+				<div class="col-xs-6">
+					<label class="col-md-3 control-label" style="font-size: 12px;">开始：</label>
+					<div class="input-group col-md-9">
+						<input type="text" id="datetimeStart" readonly
+							class="form_datetime form-control"> <span
+							class="input-group-addon glyphicon glyphicon-calendar"></span>
+					</div>
+				</div>
+				<div class="col-xs-6">
+					<label class="col-md-3 control-label" style="font-size: 12px;">结束：</label>
+					<div class="input-group col-md-9">
+						<input type="text" id="datetimeEnd" readonly
+							class="form_datetime form-control"> <span
+							class="input-group-addon glyphicon glyphicon-calendar"></span>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-1">
+				<button type="button" id="day_seach" class="btn btn-primary btn-sm">查询统计</button>
+			</div>
+		</div>
+
+		<table class="table table-hover table-bordered">
+			<caption class="text-center"></caption>
+			<thead>
+				<tr class="success">
+					<th>日期</th>
+					<th>新用户</th>
+					<th>老用户</th>
+					<th>活跃用户</th>
+					<th>次留</th>
+					<th>三日</th>
+					<th>七日</th>
+					<th>当日新充</th>
+					<th>流水</th>
+					<th>付费率</th>
+					<th>人均ARPU</th>
+					<th>人均ARPPU</th>
+					<th>新充七日</th>
+				</tr>
+			</thead>
+			<tbody id="t_body_day">
+			</tbody>
+		</table>
+	</div>
+
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript"
+		src="../js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript"
+		src="../js/bootstrap-datetimepicker.zh-CN.js"></script>
+	<script type="text/javascript" src="../plugins/select2/select2.min.js"></script>
+	<script type="text/javascript" src="../plugins/select2/i18n/zh-CN.js"></script>
+	<script type="text/javascript" src="../js/mine/censuse.js"></script>
+</body>
+</html>

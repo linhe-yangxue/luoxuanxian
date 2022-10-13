@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssmLogin.defdata.mapper.CensuseMapper" >
+  <resultMap id="BaseResultMap" type="com.ssmLogin.defdata.entity.Censuse" >
+    <id column="gid" property="gid" jdbcType="VARCHAR" />
+    <id column="lgdate" property="lgdate" jdbcType="DATE" />
+    <id column="pid" property="pid" jdbcType="VARCHAR" />
+    <id column="zid" property="zid" jdbcType="INTEGER" />
+    <result column="newUser" property="newUser" jdbcType="INTEGER" />
+    <result column="oldUser" property="oldUser" jdbcType="INTEGER" />
+    <result column="actUser" property="actUser" jdbcType="INTEGER" />
+    <result column="time_left" property="time_left" jdbcType="REAL" />
+    <result column="day3_left" property="day3_left" jdbcType="REAL" />
+    <result column="day7_left" property="day7_left" jdbcType="REAL" />
+    <result column="newpay" property="newpay" jdbcType="REAL" />
+    <result column="money" property="money" jdbcType="REAL" />
+    <result column="payRate" property="payRate" jdbcType="REAL" />
+    <result column="arpu" property="arpu" jdbcType="REAL" />
+    <result column="arppu" property="arppu" jdbcType="REAL" />
+    <result column="new7pay" property="new7pay" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    gid, lgdate, pid, zid, newUser, oldUser, actUser, time_left, day3_left, day7_left, 
+    newpay, money, payRate, arpu, arppu, new7pay
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ssmLogin.defdata.entity.CensuseCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from censuse
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.ssmLogin.defdata.entity.CensuseKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from censuse
+    where gid = #{gid,jdbcType=VARCHAR}
+      and lgdate = #{lgdate,jdbcType=DATE}
+      and pid = #{pid,jdbcType=VARCHAR}
+      and zid = #{zid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.ssmLogin.defdata.entity.CensuseKey" >
+    delete from censuse
+    where gid = #{gid,jdbcType=VARCHAR}
+      and lgdate = #{lgdate,jdbcType=DATE}
+      and pid = #{pid,jdbcType=VARCHAR}
+      and zid = #{zid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ssmLogin.defdata.entity.CensuseCriteria" >
+    delete from censuse
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ssmLogin.defdata.entity.Censuse" >
+    insert into censuse (gid, lgdate, pid, 
+      zid, newUser, oldUser, 
+      actUser, time_left, day3_left, 
+      day7_left, newpay, money, payRate, 
+      arpu, arppu, new7pay)
+    values (#{gid,jdbcType=VARCHAR}, #{lgdate,jdbcType=DATE}, #{pid,jdbcType=VARCHAR}, 
+      #{zid,jdbcType=INTEGER}, #{newUser,jdbcType=INTEGER}, #{oldUser,jdbcType=INTEGER}, 
+      #{actUser,jdbcType=INTEGER}, #{time_left,jdbcType=REAL}, #{day3_left,jdbcType=REAL}, 
+      #{day7_left,jdbcType=REAL}, #{newpay,jdbcType=REAL}, #{money,jdbcType=REAL}, #{payRate,jdbcType=REAL}, 
+      #{arpu,jdbcType=REAL}, #{arppu,jdbcType=REAL}, #{new7pay,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ssmLogin.defdata.entity.Censuse" >
+    insert into censuse
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="gid != null" >
+        gid,
+      </if>
+      <if test="lgdate != null" >
+        lgdate,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="zid != null" >
+        zid,
+      </if>
+      <if test="newUser != null" >
+        newUser,
+      </if>
+      <if test="oldUser != null" >
+        oldUser,
+      </if>
+      <if test="actUser != null" >
+        actUser,
+      </if>
+      <if test="time_left != null" >
+        time_left,
+      </if>
+      <if test="day3_left != null" >
+        day3_left,
+      </if>
+      <if test="day7_left != null" >
+        day7_left,
+      </if>
+      <if test="newpay != null" >
+        newpay,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="payRate != null" >
+        payRate,
+      </if>
+      <if test="arpu != null" >
+        arpu,
+      </if>
+      <if test="arppu != null" >
+        arppu,
+      </if>
+      <if test="new7pay != null" >
+        new7pay,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="gid != null" >
+        #{gid,jdbcType=VARCHAR},
+      </if>
+      <if test="lgdate != null" >
+        #{lgdate,jdbcType=DATE},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="zid != null" >
+        #{zid,jdbcType=INTEGER},
+      </if>
+      <if test="newUser != null" >
+        #{newUser,jdbcType=INTEGER},
+      </if>
+      <if test="oldUser != null" >
+        #{oldUser,jdbcType=INTEGER},
+      </if>
+      <if test="actUser != null" >
+        #{actUser,jdbcType=INTEGER},
+      </if>
+      <if test="time_left != null" >
+        #{time_left,jdbcType=REAL},
+      </if>
+      <if test="day3_left != null" >
+        #{day3_left,jdbcType=REAL},
+      </if>
+      <if test="day7_left != null" >
+        #{day7_left,jdbcType=REAL},
+      </if>
+      <if test="newpay != null" >
+        #{newpay,jdbcType=REAL},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=REAL},
+      </if>
+      <if test="payRate != null" >
+        #{payRate,jdbcType=REAL},
+      </if>
+      <if test="arpu != null" >
+        #{arpu,jdbcType=REAL},
+      </if>
+      <if test="arppu != null" >
+        #{arppu,jdbcType=REAL},
+      </if>
+      <if test="new7pay != null" >
+        #{new7pay,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ssmLogin.defdata.entity.CensuseCriteria" resultType="java.lang.Integer" >
+    select count(*) from censuse
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update censuse
+    <set >
+      <if test="record.gid != null" >
+        gid = #{record.gid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lgdate != null" >
+        lgdate = #{record.lgdate,jdbcType=DATE},
+      </if>
+      <if test="record.pid != null" >
+        pid = #{record.pid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zid != null" >
+        zid = #{record.zid,jdbcType=INTEGER},
+      </if>
+      <if test="record.newUser != null" >
+        newUser = #{record.newUser,jdbcType=INTEGER},
+      </if>
+      <if test="record.oldUser != null" >
+        oldUser = #{record.oldUser,jdbcType=INTEGER},
+      </if>
+      <if test="record.actUser != null" >
+        actUser = #{record.actUser,jdbcType=INTEGER},
+      </if>
+      <if test="record.time_left != null" >
+        time_left = #{record.time_left,jdbcType=REAL},
+      </if>
+      <if test="record.day3_left != null" >
+        day3_left = #{record.day3_left,jdbcType=REAL},
+      </if>
+      <if test="record.day7_left != null" >
+        day7_left = #{record.day7_left,jdbcType=REAL},
+      </if>
+      <if test="record.newpay != null" >
+        newpay = #{record.newpay,jdbcType=REAL},
+      </if>
+      <if test="record.money != null" >
+        money = #{record.money,jdbcType=REAL},
+      </if>
+      <if test="record.payRate != null" >
+        payRate = #{record.payRate,jdbcType=REAL},
+      </if>
+      <if test="record.arpu != null" >
+        arpu = #{record.arpu,jdbcType=REAL},
+      </if>
+      <if test="record.arppu != null" >
+        arppu = #{record.arppu,jdbcType=REAL},
+      </if>
+      <if test="record.new7pay != null" >
+        new7pay = #{record.new7pay,jdbcType=REAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update censuse
+    set gid = #{record.gid,jdbcType=VARCHAR},
+      lgdate = #{record.lgdate,jdbcType=DATE},
+      pid = #{record.pid,jdbcType=VARCHAR},
+      zid = #{record.zid,jdbcType=INTEGER},
+      newUser = #{record.newUser,jdbcType=INTEGER},
+      oldUser = #{record.oldUser,jdbcType=INTEGER},
+      actUser = #{record.actUser,jdbcType=INTEGER},
+      time_left = #{record.time_left,jdbcType=REAL},
+      day3_left = #{record.day3_left,jdbcType=REAL},
+      day7_left = #{record.day7_left,jdbcType=REAL},
+      newpay = #{record.newpay,jdbcType=REAL},
+      money = #{record.money,jdbcType=REAL},
+      payRate = #{record.payRate,jdbcType=REAL},
+      arpu = #{record.arpu,jdbcType=REAL},
+      arppu = #{record.arppu,jdbcType=REAL},
+      new7pay = #{record.new7pay,jdbcType=REAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ssmLogin.defdata.entity.Censuse" >
+    update censuse
+    <set >
+      <if test="newUser != null" >
+        newUser = #{newUser,jdbcType=INTEGER},
+      </if>
+      <if test="oldUser != null" >
+        oldUser = #{oldUser,jdbcType=INTEGER},
+      </if>
+      <if test="actUser != null" >
+        actUser = #{actUser,jdbcType=INTEGER},
+      </if>
+      <if test="time_left != null" >
+        time_left = #{time_left,jdbcType=REAL},
+      </if>
+      <if test="day3_left != null" >
+        day3_left = #{day3_left,jdbcType=REAL},
+      </if>
+      <if test="day7_left != null" >
+        day7_left = #{day7_left,jdbcType=REAL},
+      </if>
+      <if test="newpay != null" >
+        newpay = #{newpay,jdbcType=REAL},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=REAL},
+      </if>
+      <if test="payRate != null" >
+        payRate = #{payRate,jdbcType=REAL},
+      </if>
+      <if test="arpu != null" >
+        arpu = #{arpu,jdbcType=REAL},
+      </if>
+      <if test="arppu != null" >
+        arppu = #{arppu,jdbcType=REAL},
+      </if>
+      <if test="new7pay != null" >
+        new7pay = #{new7pay,jdbcType=REAL},
+      </if>
+    </set>
+    where gid = #{gid,jdbcType=VARCHAR}
+      and lgdate = #{lgdate,jdbcType=DATE}
+      and pid = #{pid,jdbcType=VARCHAR}
+      and zid = #{zid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ssmLogin.defdata.entity.Censuse" >
+    update censuse
+    set newUser = #{newUser,jdbcType=INTEGER},
+      oldUser = #{oldUser,jdbcType=INTEGER},
+      actUser = #{actUser,jdbcType=INTEGER},
+      time_left = #{time_left,jdbcType=REAL},
+      day3_left = #{day3_left,jdbcType=REAL},
+      day7_left = #{day7_left,jdbcType=REAL},
+      newpay = #{newpay,jdbcType=REAL},
+      money = #{money,jdbcType=REAL},
+      payRate = #{payRate,jdbcType=REAL},
+      arpu = #{arpu,jdbcType=REAL},
+      arppu = #{arppu,jdbcType=REAL},
+      new7pay = #{new7pay,jdbcType=REAL}
+    where gid = #{gid,jdbcType=VARCHAR}
+      and lgdate = #{lgdate,jdbcType=DATE}
+      and pid = #{pid,jdbcType=VARCHAR}
+      and zid = #{zid,jdbcType=INTEGER}
+  </update>
+</mapper>

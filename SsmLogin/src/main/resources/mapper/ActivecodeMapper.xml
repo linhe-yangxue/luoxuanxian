@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssmLogin.defdata.mapper.ActivecodeMapper" >
+  <resultMap id="BaseResultMap" type="com.ssmLogin.defdata.entity.Activecode" >
+    <id column="activeCode" property="activeCode" jdbcType="VARCHAR" />
+    <result column="gid" property="gid" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="VARCHAR" />
+    <result column="zid" property="zid" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="expire" property="expire" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    activeCode, gid, pid, zid, uid, status, expire
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ssmLogin.defdata.entity.ActivecodeCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from activecode
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from activecode
+    where activeCode = #{activeCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from activecode
+    where activeCode = #{activeCode,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ssmLogin.defdata.entity.ActivecodeCriteria" >
+    delete from activecode
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ssmLogin.defdata.entity.Activecode" >
+    insert into activecode (activeCode, gid, pid, 
+      zid, uid, status, expire
+      )
+    values (#{activeCode,jdbcType=VARCHAR}, #{gid,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, 
+      #{zid,jdbcType=INTEGER}, #{uid,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{expire,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ssmLogin.defdata.entity.Activecode" >
+    insert into activecode
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="activeCode != null" >
+        activeCode,
+      </if>
+      <if test="gid != null" >
+        gid,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="zid != null" >
+        zid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="expire != null" >
+        expire,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="activeCode != null" >
+        #{activeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="gid != null" >
+        #{gid,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="zid != null" >
+        #{zid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="expire != null" >
+        #{expire,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ssmLogin.defdata.entity.ActivecodeCriteria" resultType="java.lang.Integer" >
+    select count(*) from activecode
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update activecode
+    <set >
+      <if test="record.activeCode != null" >
+        activeCode = #{record.activeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gid != null" >
+        gid = #{record.gid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pid != null" >
+        pid = #{record.pid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zid != null" >
+        zid = #{record.zid,jdbcType=INTEGER},
+      </if>
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.expire != null" >
+        expire = #{record.expire,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update activecode
+    set activeCode = #{record.activeCode,jdbcType=VARCHAR},
+      gid = #{record.gid,jdbcType=VARCHAR},
+      pid = #{record.pid,jdbcType=VARCHAR},
+      zid = #{record.zid,jdbcType=INTEGER},
+      uid = #{record.uid,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      expire = #{record.expire,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ssmLogin.defdata.entity.Activecode" >
+    update activecode
+    <set >
+      <if test="gid != null" >
+        gid = #{gid,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="zid != null" >
+        zid = #{zid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="expire != null" >
+        expire = #{expire,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where activeCode = #{activeCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ssmLogin.defdata.entity.Activecode" >
+    update activecode
+    set gid = #{gid,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=VARCHAR},
+      zid = #{zid,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      expire = #{expire,jdbcType=TIMESTAMP}
+    where activeCode = #{activeCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

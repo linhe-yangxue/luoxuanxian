@@ -1,0 +1,24 @@
+﻿[
+    {
+        "pid":"doubi",
+        "wxname":"逗比公众号",
+        "business":"1276953801",
+        "appid":"wxaa2bde03da4b31ef",
+        "secret":"0d7270e141525769279b77b21eac9b87",
+        "token":"gigahtmlgame",
+        "eskey":"oUG8R14mR2R9IVhcHm66fPjgQ0tpuDqxECKCPXBaW69",
+        "paykey":"htmlgame5gigagame8888888887ec02e",
+        "callPay":"http://h5.gamesgiga.com/weixin/pay" 
+    },
+    {
+        "pid":"wanbei",
+        "wxname":"玩贝公众号",
+        "business":"1302617401",
+        "appid":"wxb4e89f6a038e107a",
+        "secret":"ea40c79f3fffcf17441f740c94bc2513",
+        "token":"fe844379eebc467d869f2a7bfbdb4520",
+        "eskey":"DAYbRWmhLHclT1Tx1YHqoLSIM3y04Qhjy7w5MxgOy4u",
+        "paykey":"xvohiinyogg1ma3f8cu9cizimrfn5f0s",
+        "callPay":"http://yq.gamesgiga.com/pay" 
+    }
+]

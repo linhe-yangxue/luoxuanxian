@@ -1,0 +1,20 @@
+{
+    "TroopsC":3,
+    "Consume":401,
+    "QuantityC":1,
+    "grabbleT":3000,
+    "CombatT":90000,
+    "scope":[800,950],
+    "ScopeMax":1200,
+    "ScopeMin":500,
+    "ScopeI":50,
+    "FeatsID":2,
+    "Floored":30,
+    "Draw":35,
+    "FeatsMax":1000000000,
+    "Scene":3,
+    "Robot":[50001,50002,50003,50004,50005,50006,50007,50008,50009,50010,50011,50012,50013,50014,50015,50016,50017,50018,50019,50020,50021,50022,50023,50024,50025,50035,50036,50037,50038,50041,50042,50043],
+    "RobotI":["icon_head0_png","icon_head1_png","icon_head2_png","icon_head3_png","icon_head4_png","icon_head5_png"],
+    "RobotN":["robot1","robot2","robot3","robot4","robot5","robot6","robot7","robot8","robot9","robot10","robot11"]
+}
+

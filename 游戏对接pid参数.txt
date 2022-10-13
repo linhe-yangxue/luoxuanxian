@@ -1,0 +1,77 @@
+
+/**
+ * 平台编号
+ * 
+ * @class I_Platform
+ * 
+ * @author Only
+ * @version
+ */
+class I_Platform {
+    /**易接 */
+    public static p_dangle: string = "Dangle";
+    /**测试 */
+    public static p_dev: string = "test";
+    /**玩呗 */
+    public static p_wanbei: string = "wanbei";
+    /**游旺*/
+    public static p_wannaplay: string = "wannaplay";
+    /**群黑 */
+    public static p_qh: string = "qh";
+    /**1758 */
+    public static p_i1758: string = "i1758";
+    /**9g */
+    public static p_9g: string = "i9g";
+    /**呵呵玩 */
+    public static p_hhw: string = "hhw";
+    /**就要玩 */
+    public static p_jyw: string = "jyw";
+    /**仙侠 */
+    public static p_xx: string = "xx";
+    /**爱游戏 */
+    public static p_ayx: string = "ayx";
+    /**白鹭 */
+    public static p_nest: string = "egret";
+    /**爱奇艺*/
+    public static p_iqy: string = "aqy";
+    /**4177*/
+    public static p_4177: string = "4177";
+    /**自由网络 */
+    public static p_zywl: string = "zywl";
+    /**漫舞网络 */
+    public static p_mwyx: string = "mwyx";
+    /**萝卜玩*/
+    public static p_lbw: string = "lbw";
+    /**乐嗨嗨*/
+    public static p_lhh: string = "lhh";
+    /**杭州虚核*/
+    public static p_hzxh: string = "hzxh";
+    /**伍游*/
+    public static p_wy: string = "wy";
+    /**3500*/
+    public static p_3500: string = "3500";
+    /**小七*/
+    public static p_xq: string = "xq";
+    /**城会玩 */
+    public static p_chw: string = "chw";
+    /**游戏金榜 */
+    public static p_yxjb: string = "yxjb";
+    /**layabox */
+    public static p_laya: string = "laya";
+    /**360 */
+    public static p_360: string = "360";
+    /**百度 */
+    public static p_baidu: string = "bd";
+    /**蝴蝶互动 */
+    public static p_hdhd: string = "hdhd";
+    /**玩吧 */
+    public static p_wanba: string = "wb";
+    /**7724 */
+    public static p_7724: string = "7724";
+    /**嗨玩玩  */
+    public static p_hww: string = "hww";
+    /**香蕉H5  */
+    public static p_xjh5: string = "xjh5";
+    /**越山网络  */
+    public static p_yswl: string = "yswl";
+}

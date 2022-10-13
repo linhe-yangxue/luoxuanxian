@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>玩家列表</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-Type" content="text/html; charset=utf-8">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/bootstrapValidator.min.css" rel="stylesheet">
+<link href="../plugins/select2/select2.min.css" rel="stylesheet" type="text/css" />
+<link href="../plugins/iCheck/square/_all.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.formgroup_bottom {
+	margin-bottom: 8px;
+}
+
+ul {
+	list-style: none;
+}
+
+.user_ul {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 5px;
+	width: 100%;
+	min-height: 50px;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	float: left;
+	width: 100%;
+}
+
+.user_li {
+	background-color: #e4e4e4;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	cursor: default;
+	float: left;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	padding: 5px 5px;
+}
+
+.userRemove {
+	cursor: pointer;
+}
+</style>
+</head>
+<body>
+	<div class="container" style="padding-top: 15px;">
+		<span class="label label-warning">重新选游戏、平台或区会清空当前选中玩家</span><br> <br>
+		<div class="row">
+			<div class="col-md-6 formgroup_bottom">
+				<div class="input-group">
+					<span class="input-group-addon">游戏</span> <select class="form-control" name="gameId">
+					</select>
+				</div>
+			</div>
+			<div class="col-md-6 formgroup_bottom">
+				<div class="input-group">
+					<span class="input-group-addon">平台</span> <select class="form-control" name="plat">
+					</select>
+				</div>
+			</div>
+			<div class="col-md-6 formgroup_bottom">
+				<div class="input-group">
+					<span class="input-group-addon">大区</span> <select class="form-control" name="zid">
+					</select>
+				</div>
+			</div>
+			<div class="col-md-6 formgroup_bottom">
+				<div class="input-group">
+					<span class="input-group-addon">账号</span> <input class="form-control" name="account">
+				</div>
+			</div>
+			<div class="col-md-6 formgroup_bottom">
+				<div class="input-group">
+					<span class="input-group-addon">昵称</span> <input class="form-control" name="nikeName" placeholder="支持模糊查询">
+				</div>
+			</div>
+			<div class="col-md-12 formgroup_bottom">
+				<button id="btn_seach" type="button" class="btn btn-primary pull-left">查询</button>
+				<span class="label label-warning text-middle">当选择所有平台或所有区的时候无法查询玩家信息</span>
+				<button id="btn_shoppingCart" type="button" class="btn btn-primary pull-right">
+					发送邮件(<span id="usercount">0</span>)
+				</button>
+			</div>
+		</div>
+		<br>
+		<div class="table-responsive">
+			<table class="table table-hover table-bordered">
+				<caption class="text-center"></caption>
+				<thead>
+					<tr class="success">
+						<th>玩家ID</th>
+						<th>平台</th>
+						<th>账号</th>
+						<th>昵称</th>
+						<th>最后登陆的游戏</th>
+						<th>最后登陆时间</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody id="t_body">
+				</tbody>
+			</table>
+		</div>
+		<ul class="pager">
+			<li><a href="javascript:void(0)" id="previous">上一页</a></li>
+			<li id="currentpage">1</li>
+			<li><a href="javascript:void(0)" id="next">下一页</a></li>
+		</ul>
+
+		<div class="modal fade" id="modal-shoppingCart" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h4 class="modal-title" id="myModalLabel">发送邮件</h4>
+					</div>
+					<div class="modal-body" style="margin: 15px;">
+						<form id="addItemsform" class="form-horizontal" role="form">
+							<div class="control-group formgroup_bottom">
+								<div class="row">
+									<label class="control-label col-sm-3" for="gold">邮件类型</label>
+									<div class="col-sm-9">
+										<label class="checkbox-inline"> <input type="radio" id="mailtype_item" name="type" value="0" checked="checked"> 物品邮件
+										</label> <label class="checkbox-inline"> <input type="radio" id="mailtype_notice" name="type" value="1"> 通知邮件
+										</label>
+									</div>
+								</div>
+							</div>
+
+							<div class="control-group formgroup_bottom">
+								<div class="row">
+									<label class="control-label col-sm-3" for="user_content">玩家</label>
+									<div class="col-sm-9">
+										<label class="checkbox-inline"> <input type="radio" id="mailuser_other" name="mailType" value="1" checked="checked"> 选中玩家
+										</label> <label class="checkbox-inline"> <input type="radio" id="mailuser_all" name="mailType" value="0"> 全服
+										</label>
+										<ul class="user_ul" id="user_content">
+										</ul>
+										<input type="text" hidden="true" id="users" name="users" value="0">
+									</div>
+								</div>
+							</div>
+							<div class="control-group formgroup_bottom">
+								<div class="row">
+									<label class="control-label col-sm-3" for="title">标题</label>
+									<div class="col-sm-9">
+										<input class="form-control" name="title">
+									</div>
+								</div>
+							</div>
+							<div class="control-group formgroup_bottom">
+								<div class="row">
+									<label class="control-label col-sm-3" for="word">说明</label>
+									<div class="col-sm-9">
+										<textarea class="form-control" rows="5" name="word"></textarea>
+									</div>
+								</div>
+							</div>
+							<div id="divItem">
+								<div class="control-group formgroup_bottom">
+									<div class="row">
+										<label class="control-label col-sm-3" for="gold">金币</label>
+										<div class="col-sm-9">
+											<input name="gold" class="form-control" type="text" value="0" />
+										</div>
+									</div>
+								</div>
+								<div class="control-group formgroup_bottom">
+									<div class="row">
+										<label class="control-label col-sm-3" for="dmd">钻石</label>
+										<div class="col-sm-9">
+											<input name="dmd" class="form-control" type="text" value="0" />
+										</div>
+									</div>
+								</div>
+								<div class="control-group formgroup_bottom">
+									<div class="row">
+										<label class="control-label col-sm-3" for="diamond">物品</label>
+										<div class="col-sm-9">
+											<div id="itemls"></div>
+											<button id="btn_addItem" type="button" class="btn btn-primary">增加物品</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="control-group text-center">
+								<div class="row">
+									<div class="col-sm-offset-3 col-sm-9">
+										<button type="submit" class="btn btn-primary">提交</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrapValidator.min.js"></script>
+	<script type="text/javascript" src="../js/checkIframe.js"></script>
+	<script type="text/javascript" src="../plugins/iCheck/icheck.min.js"></script>
+	<script type="text/javascript" src="../plugins/select2/select2.min.js"></script>
+	<script type="text/javascript" src="../plugins/select2/i18n/zh-CN.js"></script>
+	<script type="text/javascript" src="../js/Dictionary.js"></script>
+	<script type="text/javascript" src="../js/mine/playerls.js"></script>
+
+</body>
+</html>

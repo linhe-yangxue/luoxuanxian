@@ -1,0 +1,14 @@
+[
+    {
+        "ID":1,
+        "Type":"1",
+        "Platform":"test",
+        "Next":3,
+        "EndTime":"20170228",
+        "Jewel":10,
+        "Gold":0,
+        "Item":0,
+        "number":0
+    }
+]
+

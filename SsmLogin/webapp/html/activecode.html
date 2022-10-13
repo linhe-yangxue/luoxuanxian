@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>玩家列表</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-Type" content="text/html; charset=utf-8">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<link href="../plugins/select2/select2.min.css" rel="stylesheet"
+	type="text/css" />
+<link href="../plugins/iCheck/square/_all.css" rel="stylesheet"
+	type="text/css" />
+	
+<link href="../css/bootstrapValidator.min.css" rel="stylesheet">
+<style type="text/css">
+.formgroup_bottom {
+	margin-bottom: 8px;
+}
+
+ul {
+	list-style: none;
+}
+
+.user_ul {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 5px;
+	width: 100%;
+	min-height: 50px;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	float: left;
+	width: 100%;
+}
+
+.user_li {
+	background-color: #e4e4e4;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	cursor: default;
+	float: left;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	padding: 5px 5px;
+}
+
+.userRemove {
+	cursor: pointer;
+}
+</style>
+</head>
+<body>
+	<div class="container" style="padding-top: 15px;">
+		<div class="row">
+			<div class="col-md-10 formgroup_bottom">
+				<div class="input-group">
+					<span class="input-group-addon">激活码活动列表</span> <select
+						class="form-control" name="codetemplate" id="codetemplate">
+					</select>
+				</div>
+			</div>
+			<div class="col-md-2 formgroup_bottom">
+				<button type="button" id="add_template"
+					class="btn btn-primary btn-sm">添加激活模版</button>
+			</div>
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr class="success">
+						<th>到期时间</th>
+						<th>次数</th>
+						<th>钻石奖励</th>
+						<th>金币奖励</th>
+						<th>奖励道具id</th>
+						<th>奖励数量</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody id="t_template">
+				</tbody>
+			</table>
+			<div class="col-md-4 formgroup_bottom">
+				<div class="input-group">
+					<span class="input-group-addon">游戏</span> <select
+						class="form-control" name="gameId" id="gameId">
+					</select>
+				</div>
+			</div>
+			<div class="col-md-4 formgroup_bottom">
+				<div class="input-group">
+					<span class="input-group-addon" style="font-size: 12px">平台</span> <select
+						class="form-control" name="plat" id="plat">
+					</select>
+				</div>
+			</div>
+			<div class="col-md-2 formgroup_bottom">
+				<div class="input-group">
+					<span class="input-group-addon">数量</span><input type="text"
+						class="form-control" id="num">
+				</div>
+			</div>
+			<div class="col-md-2 formgroup_bottom">
+				<button type="button" id="code_creat" class="btn btn-primary btn-sm">创建激活码</button>
+			</div>
+		</div>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr class="success">
+					<th>激活码1列</th>
+					<th>激活码2列</th>
+					<th>激活码3列</th>
+					<th>激活码4列</th>
+					<th>激活码5列</th>
+					<th>激活码6列</th>
+				</tr>
+			</thead>
+			<tbody id="t_body_code">
+			</tbody>
+		</table>
+		<div class="modal fade" id="modal-modifySer" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">×</button>
+						<h4 class="modal-title" id="myModalLabel">激活码模版添加</h4>
+					</div>
+					<div class="modal-body">
+						<form id="modifyGame" class="form-horizontal" role="form"
+							style="margin-left: 15px; margin-right: 15px;">
+							<div class="row" id="itemform">
+								<div class="col-md-6 form-group">
+									<div class="input-group">
+										<span class="input-group-addon">创建名称</span> <input type="text"
+											class="form-control" name="title">
+									</div>
+								</div>
+								<div class="col-md-1 form-group"></div>
+								<div class="col-md-6 form-group">
+									<div class="input-group">
+										<span class="input-group-addon">次数</span> <input type="text"
+											class="form-control" name="times">
+									</div>
+								</div>
+								<div class="col-md-8 form-group">
+									<div class="input-group">
+										<span class="input-group-addon">有效期时间</span>
+										<input type="text" id="datetimeEnd"  name="exiper" readonly
+											class="form_datetime form-control"> <span
+											class="input-group-addon glyphicon glyphicon-calendar"></span>
+									</div>
+								</div>
+								<div class="col-md-4 form-group"></div>
+								<div class="col-md-6 form-group">
+									<div class="input-group">
+										<span class="input-group-addon">钻石数量</span><input type="text"
+											class="form-control" name="jewel">
+									</div>
+								</div>
+								<div class="col-md-1 form-group"></div>
+								<div class="col-md-6 form-group">
+									<div class="input-group">
+										<span class="input-group-addon">金币数量</span><input type="text"
+											class="form-control" name="gold">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group text-center">
+									<button type="button" class="btn btn-primary" id="itemsadd">添加道具</button>
+									<button type="submit" class="btn btn-primary">保存模版</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrapValidator.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap-datetimepicker.zh-CN.js"></script>
+	<script type="text/javascript" src="../plugins/select2/select2.min.js"></script>
+	<script type="text/javascript" src="../plugins/select2/i18n/zh-CN.js"></script>
+	<script type="text/javascript" src="../js/mine/activecode.js"></script>
+
+</body>
+</html>

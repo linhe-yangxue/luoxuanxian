@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssmLogin.defdata.mapper.ProcedureMapper">
+
+	<parameterMap id="pro_pram_Map" type="java.util.Map">
+		<parameter property="gid" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="pid" jdbcType="VARCHAR" mode="IN" />
+		<!--<parameter property="zid" jdbcType="INTEGER" mode="IN" />-->
+		<parameter property="upays" jdbcType="INTEGER" mode="INOUT" />
+		<parameter property="gName" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="pName" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="onlineDate" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="users" jdbcType="INTEGER" mode="OUT" />
+		<parameter property="tallpay" jdbcType="FLOAT" mode="OUT" />
+		<parameter property="payRate" jdbcType="FLOAT" mode="OUT" />
+		<parameter property="arpu" jdbcType="FLOAT" mode="OUT" />
+		<parameter property="arppu" jdbcType="FLOAT" mode="OUT" />
+		<!--<parameter property="allUser" jdbcType="FLOAT" mode="OUT" />-->
+	</parameterMap>
+	
+	<parameterMap id="pro_pram_day" type="java.util.Map">
+		<parameter property="gid" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="pid" jdbcType="VARCHAR" mode="IN" />
+		<!--<parameter property="zid" jdbcType="VARCHAR" mode="IN" />-->
+		<parameter property="startTime" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="endTime" jdbcType="VARCHAR" mode="IN" />
+<!--		<parameter property="lgdate" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="newUser" jdbcType="INTEGER" mode="OUT" />
+		<parameter property="actUser" jdbcType="INTEGER" mode="OUT" />
+		<parameter property="oldUser" jdbcType="INTEGER" mode="OUT" />
+		<parameter property="time_left" jdbcType="FLOAT" mode="OUT" />
+		<parameter property="day3_left" jdbcType="FLOAT" mode="OUT" />
+		<parameter property="day7_left" jdbcType="FLOAT" mode="OUT" />
+		<parameter property="newpay" jdbcType="FLOAT" mode="OUT" />
+		<parameter property="money" jdbcType="FLOAT" mode="OUT" />
+		<parameter property="payRate" jdbcType="FLOAT" mode="OUT" />
+		<parameter property="new7pay" jdbcType="FLOAT" mode="OUT" />
+		<parameter property="arpu" jdbcType="FLOAT" mode="OUT" />
+		<parameter property="arppu" jdbcType="FLOAT" mode="OUT" />-->
+	</parameterMap>
+	
+	<select id="selectProedure" parameterMap="pro_pram_Map" statementType="CALLABLE" resultType="java.lang.String">
+		{Call P_pg_Count(?,?,?,?,?,?,?,?,?,?,?)}
+	</select>
+	
+	<select id="dayCensus" parameterMap="pro_pram_day" statementType="CALLABLE"
+			resultType="com.ssmLogin.defdata.entity.Censuse">
+<!-- 		{Call P_view_count(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)} -->
+		{Call P_view_count(?,?,?,?)}
+	</select>
+	
+</mapper>
